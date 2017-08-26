@@ -24,7 +24,9 @@ namespace WebApiOwin
         /// <returns>A collection of listeners.</returns>
         protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
         {
-            return new ServiceInstanceListener[0];
+            return new[] {
+                new ServiceInstanceListener(context => new OwinCommunicationListener("api", new Startup(), context ))
+            };
         }
 
         /// <summary>
